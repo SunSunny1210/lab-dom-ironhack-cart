@@ -2,8 +2,28 @@
 
 function updateSubtotal(product) {
   console.log('Calculating subtotal, yey!');
+  
+  const prices= product.querySelector('.price span');
 
-  //... your code goes here
+  const quantity = product.querySelector('.quantity > input[value]');
+
+  const price = parseFloat(prices.innerText);
+  
+  let quantityValue = quantity.value;
+
+  let pricesTotal = 0;
+
+  if (quantityValue > 1) {
+    pricesTotal = quantityValue * price;
+  }
+
+  const subTotal = product.querySelector('.subtotal span');
+
+  if (subTotal) {
+  subTotal.innerText = pricesTotal.toFixed(2).toString();
+  }
+
+  return subTotal.innerText;
 }
 
 function calculateAll() {
