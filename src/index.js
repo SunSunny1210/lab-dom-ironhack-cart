@@ -67,16 +67,34 @@ function removeProduct(event) {
   calculateAll();
 }
 
-window.onload = () => {
-  const removeBtns = document.getElementsByClassName('btn btn-remove')
-  
-  Array.from(removeBtns).forEach((el) => el.onclick = removeProduct)
-}
 
 // ITERATION 5
 
 function createProduct() {
-  //... your code goes here
+  const newProduct = document.querySelector('.create-product')
+
+  if (newProduct) {
+    const newProductName = newProduct.querySelector('.new-product-name input');
+    const newProductNameValue = newProductName.value;
+    const newProductPrice = newProduct.querySelector('.new-product-price input');
+    const newProductPriceValue = parseFloat(newProductPrice.value).toFixed(2);
+
+    const allProductsClone = document.querySelector('.product').cloneNode(true);
+
+    const name = allProductsClone.querySelector('.name span');
+    const price = allProductsClone.querySelector('.price span');
+    const subTotal = allProductsClone.querySelector('.subtotal span');
+    const quantity = allProductsClone.querySelector('.quantity input');
+
+    name.innerText = newProductNameValue;
+    price.innerText = newProductPriceValue.toString();
+    subTotal.innerText = "0"
+    quantity.value = 1
+    
+    document.querySelector('tbody').appendChild(allProductsClone);
+
+    return allProductsClone
+  }
 }
 
 window.addEventListener('load', () => {
@@ -84,4 +102,9 @@ window.addEventListener('load', () => {
   calculatePricesBtn.addEventListener('click', calculateAll);
 
   //... your code goes here
+  const removeBtns = document.getElementsByClassName('btn btn-remove')
+  Array.from(removeBtns).forEach((el) => el.onclick = removeProduct)
+
+  const createBtn = document.querySelector('#create');
+  createBtn.onclick = createProduct;
 });
