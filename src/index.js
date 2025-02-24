@@ -57,6 +57,20 @@ function removeProduct(event) {
   const target = event.currentTarget;
   console.log('The target in remove is:', target);
   //... your code goes here
+  
+  const product = target.closest('.product');
+
+  if (product) {
+    product.remove();
+  }
+
+  calculateAll();
+}
+
+window.onload = () => {
+  const removeBtns = document.getElementsByClassName('btn btn-remove')
+  
+  Array.from(removeBtns).forEach((el) => el.onclick = removeProduct)
 }
 
 // ITERATION 5
