@@ -38,7 +38,6 @@ function calculateAll() {
 
   let total = 0;
 
-
   allProducts.forEach((el) => {
     total += parseFloat(updateSubtotal(el));
   })
@@ -50,8 +49,6 @@ function calculateAll() {
   }
 
   return total
-  // ITERATION 3
-  //... your code goes here
 }
 
 // ITERATION 4
